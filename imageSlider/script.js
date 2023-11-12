@@ -14,6 +14,7 @@ function nextImageCall(){
     }
     
     slides[counter].style.animation='next2 0.5s ease-in forwards'
+    currentDots()
 }
 
 prev.addEventListener('click',prevImageCall);
@@ -26,12 +27,14 @@ function prevImageCall(){
     }
     
     slides[counter].style.animation='prev2 0.5s ease-in forwards'
+    currentDots()
 }
 
 
 function autoslide(){
     continueSliding=setInterval(()=>{
         nextImageCall();
+        currentDots()
     },2000)
 }
 autoslide();
@@ -43,3 +46,29 @@ main.addEventListener('mouseover',()=>{
 main.addEventListener('mouseout',()=>{
     autoslide();
 })
+
+
+
+function currentDots(){
+    dots.forEach((items,index)=>{
+        items.classList='';
+    });
+    dots[count].classList+='active';
+}
+
+dots.forEach((items,index)=>{
+    items.addEventListener('click',()=>{
+        if(index>count){
+            slides[count].style.animation='next1 .1s ease-in forwards';
+            count=index;
+            slides[count].style.animation='next2 .1s ease-in forwards';
+        }else if(index===count){
+            return;
+        }else{
+            slides[count].style.animation='prev1 .1s ease-in forwards';
+            count=index;
+            slides[count].style.animation='prev2 .1s ease-in forwards';
+        }
+        currentDots()
+    })
+});
