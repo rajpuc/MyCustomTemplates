@@ -57,6 +57,25 @@ body{
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
 } */
+.dots{
+    position: absolute;
+    bottom: 5%;
+    left: 20%;
+}
+.dots span{
+    display:inline-block;
+    width:.8rem;
+    height:.8rem;
+    border-radius: 50%;
+    background-color: var(--gray-color);
+    cursor: pointer;
+}
+.dots span:nth-child(2){
+    margin: 0 1rem;
+}
+.dots span.active{
+    background-color: var(--secondary-color);
+}
 
 @keyframes next1 {
     0%{
